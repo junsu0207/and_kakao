@@ -60,4 +60,17 @@ public class Member {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "seq=" + seq +
+                ", name='" + name + '\'' +
+                ", pass='" + pass + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", addr='" + addr + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
+    }
 }

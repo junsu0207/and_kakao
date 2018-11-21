@@ -5,14 +5,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
-        android:id="@+id/btnDetail"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="상세정보"
+        android:hint="친구추가"
         />
-    <TextView
+    <ListView
+        android:id="@+id/mbrList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="여기는 listPage"
-        />
+        android:layout_height="wrap_content"></ListView>
+
 </LinearLayout>

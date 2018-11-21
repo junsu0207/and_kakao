@@ -22,6 +22,9 @@ public class Main extends AppCompatActivity {
         findViewById(R.id.moveLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SqliteHelper helper = new SqliteHelper(ctx);
+                // helper 라는 객체를 만드는 것은
+                // 곧 SQLite DB를 만든 것이다.
                 /*
                 Intent intent = new Intent(ctx,Login.class);
                 startActivity(intent);
@@ -29,6 +32,7 @@ public class Main extends AppCompatActivity {
                 */
                 startActivity(new Intent(ctx,Login.class));
                 // intent 이동하는 객체 new 로 생성후 여기 ctx 에서 가고자 하는 곳으로 class로 이동
+
             }
         });
 
@@ -38,7 +42,7 @@ public class Main extends AppCompatActivity {
     }
 
     static interface ExecuteService{
-        public void porfome();
+        public void perfome();
     }
     static  interface ListService{
         public List<?> perfome();
@@ -55,9 +59,8 @@ public class Main extends AppCompatActivity {
     }
     static class SqliteHelper extends SQLiteOpenHelper{
 
-        public SqliteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-            super(context, DBInfo.DBNAME, null
-                    , 1);
+        public SqliteHelper(Context context) {
+            super(context, DBInfo.DBNAME, null, 1);
             this.getWritableDatabase();
         }
 
@@ -117,7 +120,8 @@ public class Main extends AppCompatActivity {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL("DROP TABLE IF EXISTS "+DBInfo.MBR_TABLE);
+            onCreate(db);
         }
     }
 }
