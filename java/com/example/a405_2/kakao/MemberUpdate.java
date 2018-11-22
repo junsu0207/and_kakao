@@ -14,7 +14,7 @@ public class MemberUpdate extends AppCompatActivity {
         setContentView(R.layout.member_update);
         final Context ctx = MemberUpdate.this;
 
-        findViewById(R.id.btnDetail).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.listBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ctx, MemberDetail.class));
