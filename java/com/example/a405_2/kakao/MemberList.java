@@ -1,10 +1,12 @@
 package com.example.a405_2.kakao;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +59,43 @@ public class MemberList extends AppCompatActivity {
             }
         });
         // 삭제 처리
+        mbrList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> p, View v, int i, long l) {
+                Member m = (Member)mbrList.getItemAtPosition(i);
+                new AlertDialog.Builder(ctx)
+                        .setTitle("삭제")
+                        .setMessage("정말 삭제?")
+                        .setPositiveButton(
+                                android.R.string.yes,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // 삭제 쿼리 실행
+                                        Toast.makeText(ctx,"삭제완료",Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(ctx, MemberList.class));
+                                    }
+                                }
+                        )
+                        .setNegativeButton(
+                                android.R.string.no,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(ctx,"삭제취소",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                        ).show();
+                return true;
+            }
+        });
+
+        findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ctx, MemberAdd.class));
+            }
+        });
 
     }
 

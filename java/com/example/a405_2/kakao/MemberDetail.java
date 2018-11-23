@@ -42,7 +42,7 @@ public class MemberDetail extends AppCompatActivity {
         // 선택한 멤버 로그출력
         Log.d("선택한 멤버 정보", m.toString());
         final String spec = m.seq+"/"+m.addr+"/"+m.email+"/"+m.name+"/"+m.phone+"/"+m.photo+"/"+m.pass;
-        // 토큰으로 끊어서 꺼내기
+        // 토큰으로 끊어서 넘겨 받은 item
 //        String[] arr = spec.split("/");
         findViewById(R.id.updateBtn).setOnClickListener(new View.OnClickListener() {
             @Override
