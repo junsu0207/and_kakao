@@ -15,6 +15,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a405_2.kakao.util.Album;
+import com.example.a405_2.kakao.util.Email;
+import com.example.a405_2.kakao.util.Phone;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +35,7 @@ public class MemberDetail extends AppCompatActivity {
 
             final DetailList query = new DetailList(ctx);
             query.seq = seq;
-            Member m = (Member) new Main.ObjectService() {
+            final Member m = (Member) new Main.ObjectService() {
                 @Override
                 public Object perfome() {
                     return query.execute();
@@ -58,6 +62,61 @@ public class MemberDetail extends AppCompatActivity {
                 startActivity(new Intent(ctx, MemberList.class));
             }
         });
+        findViewById(R.id.callBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Phone phone = new Phone(ctx,MemberDetail.this);
+                phone.setPhoneNum(m.phone);
+                phone.directCall();
+            }
+        });
+        findViewById(R.id.dialBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Phone phone = new Phone(ctx,MemberDetail.this);
+                phone.setPhoneNum(m.phone);
+                phone.dial();
+
+            }
+        });
+        findViewById(R.id.smsBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.emailBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Email email = new Email(ctx,MemberDetail.this);
+                email.sendEmail("son910220@gmail.com");
+            }
+        });
+        findViewById(R.id.albumBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ctx, Album.class));
+            }
+        });
+        findViewById(R.id.movieBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.mapBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.musicBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private class DetailQuery extends Main.QueryFactory{
