@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.a405_2.kakao.util.Album;
 import com.example.a405_2.kakao.util.Email;
+import com.example.a405_2.kakao.util.Movie;
 import com.example.a405_2.kakao.util.Phone;
 
 import java.util.ArrayList;
@@ -101,7 +102,7 @@ public class MemberDetail extends AppCompatActivity {
         findViewById(R.id.movieBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(ctx, Movie.class));
             }
         });
         findViewById(R.id.mapBtn).setOnClickListener(new View.OnClickListener() {

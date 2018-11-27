@@ -3,6 +3,7 @@
     package="com.example.a405_2.kakao">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,8 @@
         <activity android:name=".MemberDetail" />
         <activity android:name=".MemberUpdate" />
         <activity android:name=".MemberAdd" />
-        <activity android:name=".util.Album"></activity>
+        <activity android:name=".util.Album" />
+        <activity android:name=".util.Movie"></activity>
     </application>
 
 </manifest>
